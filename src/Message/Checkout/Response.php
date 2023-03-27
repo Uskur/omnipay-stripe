@@ -30,4 +30,20 @@ class Response extends \Omnipay\Stripe\Message\Response
 
         return !empty($this->data['url']) ? $this->data['url'] : null;
     }
+
+    /**
+     * Get the transaction reference.
+     *
+     * @return string|null
+     */
+    public function getTransactionReference()
+    {
+        if (isset($this->data['object']) && 'checkout.session' === $this->data['object']) {
+            if (!empty($this->data['id'])) {
+                return $this->data['id'];
+            }
+        }
+
+        return parent::getTransactionReference();
+    }
 }

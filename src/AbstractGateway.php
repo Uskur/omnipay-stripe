@@ -553,6 +553,11 @@ abstract class AbstractGateway extends AbstractOmnipayGateway
         return $this->createRequest('\Omnipay\Stripe\Message\DeleteCustomerRequest', $parameters);
     }
 
+    public function searchCustomer(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Stripe\Message\SearchCustomerRequest', $parameters);
+    }
+
     /**
      * Create Plan
      *

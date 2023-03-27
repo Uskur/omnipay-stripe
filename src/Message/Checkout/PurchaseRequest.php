@@ -93,6 +93,28 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
+     * Set the payment method options accepted url
+     *
+     * @param array $value
+     *
+     * @return \Omnipay\Common\Message\AbstractRequest|PurchaseRequest
+     */
+    public function setPaymentMethodOptions($value)
+    {
+        return $this->setParameter('payment_method_options', $value);
+    }
+
+    /**
+     * Get the success url
+     *
+     * @return string
+     */
+    public function getPaymentMethodOptions()
+    {
+        return $this->getParameter('payment_method_options');
+    }
+
+    /**
      * Set the payment method types accepted url
      *
      * @param string $value
@@ -209,10 +231,12 @@ class PurchaseRequest extends AbstractRequest
             'success_url' => $this->getSuccessUrl(),
             'cancel_url' => $this->getCancelUrl(),
             'payment_method_types' => $this->getPaymentMethodTypes(),
+            'payment_method_options' => $this->getPaymentMethodOptions(),
             'mode' => $this->getMode(),
             'line_items' => $this->getLineItems(),
             'customer_email' => $this->getCustomerEmail(),
             'shipping_options' => $this->getShippingOptions(),
+            'customer' => $this->getCustomerReference()
         );
 
         return $data;
